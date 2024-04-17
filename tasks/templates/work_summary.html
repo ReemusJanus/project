@@ -1,0 +1,79 @@
+<!-- tasks/templates/tasks/work_summary.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.css" rel="stylesheet"/>
+</head>
+<body class="bg-gray-900 text-white">
+    <div class="flex justify-center mt-8">
+    <h1><span class="bg-blue-100 text-blue-800 text-5xl font-semibold me-2 px-2.5 py-0.5 rounded">Work Summary</span></h1></div>
+    <div class="flex justify-center mt-8">
+        <h1 class="bg-blue-100 text-blue-800 text-2xl font-semibold me-2 px-2.5 py-0.5 rounded">Total Work Time : </h1>
+    </div>
+    <div>
+        <span class="flex justify-center mt-2 text-4xl font-extrabold ">{{ total_work_time}} seconds</span>
+    </div>
+
+    <div class="flex justify-center mt-8">
+        <h1><span class="bg-blue-100 text-blue-800 text-2xl font-semibold me-2 px-2.5 py-0.5 rounded">Tasks:</span></h1>
+    </div>
+
+    
+
+<div class="flex justify-center  mt-4 relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class=" w-1/2 text-md text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr class="text-bold text-lg">
+                <th scope="col" class="px-6 py-3 ">
+                    Description
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Punch In
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Punch Out
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Status
+                </th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for task in tasks_completed %}
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {{ task.description }}
+                </th>
+                <td class="px-6 py-4">
+                    {{ task.punch_in_time }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ task.punch_out_time }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ task.status }}
+                </td>
+            
+                {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<div class="flex justify-center">
+    <a href="{% url 'punch_in' %}"><button class="text-center mt-10 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-6 py-3 mb-4"> Punch In</button></a>
+</div>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
+</body>
+</html>
+
+
+
